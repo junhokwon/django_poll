@@ -7,7 +7,7 @@ from blog.models import Post
 
 
 def post_list(request):
-    post = Post.objects.order_by('-created date')
+    post = Post.objects.all()
     context = {
         'title' : '네이버 인기뉴스',
         'post' : post,
@@ -50,3 +50,19 @@ def post_create(request):
                 'form' : form,
             }
             return render(request)
+
+def post_modify(request,pk):
+    post = Post.objects.get(pk=pk)
+    if request.method == 'POST':
+        data = request.POST
+        title = data['title']
+        text = data['text']
+        post.title = title
+        post.text = text
+        post.save()
+        return redirect('post_detail', pk=post.pk)
+    elif request.method =='GET':
+        context = {
+            'post' : post,
+        }
+        return render(request, 'blog/post_modify.html', context=context)
