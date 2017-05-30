@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
+from blog.form import PostCreateForm
 from blog.models import Post
 
 
@@ -23,19 +24,29 @@ def post_detail(request,pk):
 
 def post_create(request):
     if request.method =='GET':
+        form = PostCreateForm()
         context = {
+            'form' : form,
 
         }
         return render(request, 'blog/post_create.html',context=context)
     elif request.method =='POST':
-        data = request.POST
-        title = data['title']
-        text = data['text']
-        user = User.objects.first()
-        post = Post.objects.create(
-            title = title,
-            text=text,
-            author=user,
-        )
-        #return HttpResponse(post)
-        return redirect('post_detail', pk=post.pk)
+        form = PostCreateForm(request.POST)
+        if form.is_valid():
+
+
+            title = form.cleaned_data['title']
+            text = form.cleaned_data['text']
+            user = User.objects.first()
+            post = Post.objects.create(
+                title = title,
+                text=text,
+                author=user,
+            )
+            #return HttpResponse(post)
+            return redirect('post_detail', pk=post.pk)
+        else:
+            context = {
+                'form' : form,
+            }
+            return render(request)

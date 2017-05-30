@@ -1,14 +1,18 @@
-{% extends 'blog/base.html %}
+{% extends 'blog/base.html' %}
 
 {% block content %}
 <form action="" method="POST">
     {% csrf_token %}
-    <div>
-        <input name ='title' type="text">
-    </div>
-    <div><textarea name="text" id="" cols="30" rows="10">내용</textarea>
-    </div>
-    <button>작성</button>
+
+    {% for field in form %}
+   <div class="form-group">
+       {{ field.label_tag}}
+       {{ field }}
+
+   </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary btn-block">제출</button>
 </form>
 
 {% endblock %}
