@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+
+{% blog content %}
+<div class="post-list">
+
+    <div>
+
+        <h3><a href="#">{{ post.title }}</a></h3>
+        <p class ='text-right'><small>published: {{ post.published_date }}</small></p>
+        <p>{{ post.text|truncatechars:100 }}</p>
+    </div>
+</div>
+{% endblock %}
