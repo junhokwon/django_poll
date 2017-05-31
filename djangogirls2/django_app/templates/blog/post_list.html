@@ -1,16 +1,21 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<div class="post-list">
-    {% for post in post %}
-    <div>
 
-        <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
-        <p class ='text-right'><small>published: {{ post.published_date }}</small></p>
-        <p>{{ post.text|truncatechars:100 }}</p>
-    </div>
+<a href="{% url 'post_create' %}" class = "btn btn-primary pull-right">포스트 추가</a>
+{% for post in post %}
+<div class="posts">
+
+
+    <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
+    <p class ='text-right'><small>published: {{ post.published_date }}</small></p>
+    <p>{{ post.text|truncatechars:100 }}</p>
+    <h3><a href="{% url 'post_modify' pk=post.pk %}" class = 'btn btn-primary pull-right'>수정</a></h3>
+
+
 </div>
-<hr>
+
+
 {% endfor %}
 
 {% endblock %}

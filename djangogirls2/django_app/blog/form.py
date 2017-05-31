@@ -7,8 +7,16 @@ class PostCreateForm(forms.Form):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class' : 'form=control'
+                'class' : 'form-control'
             }
         )
     )
-    text = forms.CharField(label='내용',widget=forms.Textarea, required=True)
+    text = forms.CharField(
+        label='내용',
+        widget=forms.Textarea(
+            attrs={
+                'class' : 'form-control',
+            }
+        ),
+        required=True
+    )

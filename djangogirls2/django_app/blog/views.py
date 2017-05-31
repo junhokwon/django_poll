@@ -1,9 +1,9 @@
 from django.contrib.auth.models import User
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from blog.form import PostCreateForm
 from blog.models import Post
+
 
 
 def post_list(request):
@@ -49,7 +49,7 @@ def post_create(request):
             context = {
                 'form' : form,
             }
-            return render(request)
+            return render(request, 'blog/post_create.html', centext = context)
 
 def post_modify(request,pk):
     post = Post.objects.get(pk=pk)

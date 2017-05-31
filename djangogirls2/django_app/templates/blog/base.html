@@ -7,14 +7,19 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
-    <title>Document</title>
-</head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>naver news</title>
+
+
+
+
 <body>
 <div class="container">
-    <div class="header"></div>
-    <div>
+    <div class="header">
         <h1><a href="{% url 'post_list' %}">네이버 뉴스</a></h1>
-        <h3>{{ title }}</h3>
+        <h4>{{ title }}</h4>
+
+    </div>
     </div>
 
     {% block content %}
@@ -22,8 +27,7 @@
 
 
 
-</div>
-</div>
-<hr>
+
+
 </body>
 </html>
