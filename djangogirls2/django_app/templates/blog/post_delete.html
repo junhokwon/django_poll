@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<a href="{% url 'post_list' %}" class="btn btn-primary pull-right">리스트보기</a>
+
+<div class="post-delete">
+    <form action="",method="POST">
+        {% csrf_token %}
+        <button type ="submit" class ='btn btn-danger btn-lg btn-block'>삭제</button>
+        <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary btn-block">되돌아가기</a>
+    </form>
+</div>
+{% endblock %}

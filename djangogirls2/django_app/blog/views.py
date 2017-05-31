@@ -66,3 +66,16 @@ def post_modify(request,pk):
             'post' : post,
         }
         return render(request, 'blog/post_modify.html', context=context)
+
+
+def post_delete(request,pk):
+    post = Post.objects.get(pk=pk)
+    if request.method == 'POST':
+        post.delete()
+        return redirect('post_detail', pk=post.pk)
+    
+    elif request.method =='GET':
+        context = {
+            'post' : post,
+        }
+        return render(request, 'blog/post_delete.html', context=context)

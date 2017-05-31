@@ -4,8 +4,11 @@
 {% block content %}
 
 <div class="post-list">
-    <h3><a href="{% url 'post_modify' pk=post.pk %}" class = 'btn btn-primary pull-right'>수정</a></h3>
+
     <div class="post">
+        <h3><a href="{% url 'post_modify' pk=post.pk %}" class = 'btn btn-primary pull-right'>수정</a></h3>
+        <h3><a href="{% url 'post_delete' pk=post.pk %}" class = 'btn btn-primary pull-right'>삭제</a></h3>
+        <h3><a href="{% url 'post_list' %}" class = 'btn btn-primary pull-right'>리스트</a></h3>
         <h3><a href="#">{{ post.title }}</a></h3>
         <p class ='text-right'><small>published: {{ post.published_date }}</small></p>
         <p>{{ post.text|truncatechars:100 }}</p>

@@ -20,3 +20,4 @@ class PostCreateForm(forms.Form):
         ),
         required=True
     )
+

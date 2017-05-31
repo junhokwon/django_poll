@@ -1,11 +1,13 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+<a href="{% url 'post_list' %}" class="btn btn-primary pull-right">리스트</a>
+<a href="{% url 'post_detail' pk=post.id %}" class="btn btn-primary pull-right">되돌아가기</a>
 
-	<form action="" method="POST">
+	<form action="" style ="display:inline-block;" method="POST">
 		{% csrf_token %}
-		<input type="text" name="title" value="{{ post.title }}">
-		<textarea name="text" id="" cols="30" rows="10">{{ post.text }}</textarea>
+		<p><input type="text" name="title" value="{{ post.title }}"></p>
+		<p><textarea name="text" id="" cols="30" rows="10">{{ post.text }}</textarea></p>
 		<button type="submit" class="btn btn-primary btn-block">수정</button>
 	</form>
 
