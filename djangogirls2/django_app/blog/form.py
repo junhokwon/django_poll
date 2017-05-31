@@ -1,5 +1,6 @@
 from django import forms
 
+
 class PostCreateForm(forms.Form):
     title = forms.CharField(
         label='제목',

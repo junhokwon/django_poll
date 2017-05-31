@@ -72,8 +72,8 @@ def post_delete(request,pk):
     post = Post.objects.get(pk=pk)
     if request.method == 'POST':
         post.delete()
-        return redirect('post_detail', pk=post.pk)
-    
+        return redirect('post_list',)
+
     elif request.method =='GET':
         context = {
             'post' : post,
